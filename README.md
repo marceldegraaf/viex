@@ -1,6 +1,8 @@
 # Viex
 
-**TODO: Add description**
+[![Build Status](https://semaphoreci.com/api/v1/marceldegraaf/viex/branches/master/badge.svg)](https://semaphoreci.com/marceldegraaf/viex)
+
+Elixir package to validate European VAT numbers with the VIES service.
 
 ## Installation
 
