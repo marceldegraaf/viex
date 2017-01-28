@@ -11,6 +11,8 @@ defmodule Viex.Mixfile do
       start_permanent: Mix.env == :prod,
       deps: deps(),
       package: package(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.html": :test],
 
       # Documentation
       name: "Viex",
@@ -31,8 +33,10 @@ defmodule Viex.Mixfile do
     [
       {:httpoison, "~> 0.11"},
       {:floki, "~> 0.13"},
+      {:exvcr, "~> 0.8", only: :test},
+      {:excoveralls, "~> 0.5", only: :test},
       {:ex_doc, "~> 0.14", only: :dev},
-      {:earmark, "~> 1.1", only: :dev}
+      {:earmark, "~> 1.1", only: :dev},
     ]
   end
 

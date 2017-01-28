@@ -21,12 +21,12 @@ Use `Viex.lookup/1` to look up a European VAT number. Returns a `Viex.Response`
 struct containing the company name, address, and a `valid` key that is either
 `true` or `false`.
 
-    iex(1)> Viex.lookup("NL188399277B01")
-    %Viex.Response{address: "KERKSTRAAT 23\n1234AB FLEVOLAND", company: "Acme B.V.",
+    iex(1)> Viex.lookup("NL854265259B01")
+    %Viex.Response{address: "PRINS BERNHARDPLEIN 00200\n1097JB AMSTERDAM", company: "GITHUB B.V.",
       valid: true}
 
 Use `Viex.valid?/1` to check the validity of a European VAT number. Returns a
 boolean.
 
-    iex(1)> Viex.valid?("NL188399277B01")
+    iex(1)> Viex.valid?("NL854265259B01")
     true
