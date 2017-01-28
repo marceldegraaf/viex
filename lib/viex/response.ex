@@ -1,7 +1,12 @@
 defmodule Viex.Response do
-  defstruct valid: nil, company: nil, address: nil
+  defstruct valid: false, company: nil, address: nil
 
-  def parse(body) do
+  @doc """
+  Parses a raw VIES SOAP response into a `Viex.Response` struct.
+  """
+  @spec parse({atom, String.t}) :: map | {:error, String.t}
+  def parse({:error, reason}), do: {:error, reason}
+  def parse({:ok, body}) do
     %Viex.Response{
       valid: valid(body),
       company: company(body),
@@ -9,13 +14,43 @@ defmodule Viex.Response do
     }
   end
 
-  defp valid(body), do: Floki.find(body, "valid") |> Floki.text
+  defp valid(body) do
+    valid =
+      body
+      |> Floki.find("valid")
+      |> Floki.text
+      |> String.strip
 
-  defp company(body), do: Floki.find(body, "name") |> Floki.text
+    case valid do
+      "true" -> true
+      ""     -> false
+      _      -> false
+    end
+  end
+
+  defp company(body) do
+    company =
+      body
+      |> Floki.find("name")
+      |> Floki.text
+      |> String.strip
+
+    case company do
+      ""      -> nil
+      company -> company
+    end
+  end
 
   defp address(body) do
-    Floki.find(body, "address")
-    |> Floki.text
-    |> String.strip
+    address =
+      body
+      |> Floki.find("address")
+      |> Floki.text
+      |> String.strip
+
+    case address do
+      ""      -> nil
+      address -> address
+    end
   end
 end

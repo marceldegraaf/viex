@@ -2,12 +2,12 @@
 
 [![Build Status](https://semaphoreci.com/api/v1/marceldegraaf/viex/branches/master/badge.svg)](https://semaphoreci.com/marceldegraaf/viex)
 
-Elixir package to validate European VAT numbers with the VIES service.
+Elixir package to validate European VAT numbers with the
+[VIES](http://ec.europa.eu/taxation_customs/vies/) service.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `viex` to your list of dependencies in `mix.exs`:
+Add `viex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -15,7 +15,18 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/viex](https://hexdocs.pm/viex).
+## Usage
 
+Use `Viex.lookup/1` to look up a European VAT number. Returns a `Viex.Response`
+struct containing the company name, address, and a `valid` key that is either
+`true` or `false`.
+
+    iex(1)> Viex.lookup("NL188399277B01")
+    %Viex.Response{address: "KERKSTRAAT 23\n1234AB FLEVOLAND", company: "Acme B.V.",
+      valid: true}
+
+Use `Viex.valid?/1` to check the validity of a European VAT number. Returns a
+boolean.
+
+    iex(1)> Viex.valid?("NL188399277B01")
+    true

@@ -1,27 +1,34 @@
 defmodule Viex do
   @moduledoc """
-  Documentation for Viex.
+  Look up and validate European VAT numbers.
   """
 
   @url "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
 
-  def verify(vat_number) when is_atom(vat_number) do
-    vat_number
-    |> Atom.to_string
-    |> verify
-  end
-
-  def verify(vat_number) do
+  @doc """
+  Look up a European VAT number. Accepts a binary, returns a `Viex.Response` struct.
+  """
+  @spec lookup(String.t) :: map | {:error, String.t}
+  def lookup(vat_number) do
     vat_number
     |> String.split_at(2)
     |> request
     |> handle_soap_response
+    |> Viex.Response.parse
   end
 
-  def verify(country, vat) do
-    request({country, vat})
-    |> handle_soap_response
+  @doc """
+  Check the validity of a European VAT number. Accepts a binary, returns a boolean.
+  """
+  @spec valid?(String.t) :: boolean
+  def valid?(vat_number) do
+    vat_number
+    |> lookup
+    |> is_valid?
   end
+
+  defp is_valid?(%Viex.Response{valid: valid}), do: valid == true
+  defp is_valid?({:error, _reason}), do: false
 
   defp request({country, vat}) do
     HTTPoison.post(@url, body(country, vat), headers(), params: params())
@@ -30,9 +37,7 @@ defmodule Viex do
   defp handle_soap_response({:error, %HTTPoison.Error{reason: reason}}), do: {:error, reason}
   defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 404}}), do: {:error, :not_found}
   defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 500}}), do: {:error, :internal_server_error}
-  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}) do
-    body
-  end
+  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}), do: {:ok, body}
 
   defp headers do
     [

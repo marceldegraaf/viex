@@ -8,7 +8,13 @@ defmodule Viex.Mixfile do
       elixir: "~> 1.4",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
+
+      # Documentation
+      name: "Viex",
+      source_url: "https://github.com/marceldegraaf/viex",
+      homepage_url: "http://github.com/marceldegraaf/viex",
+      docs: [main: "Viex", extras: ["README.md"]]
     ]
   end
 
@@ -23,6 +29,8 @@ defmodule Viex.Mixfile do
     [
       {:httpoison, "~> 0.11"},
       {:floki, "~> 0.13"},
+      {:ex_doc, "~> 0.14", only: :dev},
+      {:earmark, "~> 1.1", only: :dev}
     ]
   end
 end
