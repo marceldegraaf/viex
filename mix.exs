@@ -6,9 +6,11 @@ defmodule Viex.Mixfile do
       app: :viex,
       version: "0.1.0",
       elixir: "~> 1.4",
+      description: "Elixir package to validate European VAT numbers with the VIES service.",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       deps: deps(),
+      package: package(),
 
       # Documentation
       name: "Viex",
@@ -31,6 +33,18 @@ defmodule Viex.Mixfile do
       {:floki, "~> 0.13"},
       {:ex_doc, "~> 0.14", only: :dev},
       {:earmark, "~> 1.1", only: :dev}
+    ]
+  end
+
+  defp package do
+    [
+      licenses: ["WTFPL"],
+      maintainers: ["Marcel de Graaf <mail@marceldegraaf.net>"],
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      links: %{
+        "GitHub" => "https://github.com/marceldegraaf/viex",
+        "Documentation" => "https://hexdocs.pm/viex"
+      }
     ]
   end
 end
