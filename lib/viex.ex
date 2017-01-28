@@ -6,19 +6,21 @@ defmodule Viex do
   @url "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
 
   def verify(country, vat) do
-    case HTTPoison.post(@url, body(country, vat), headers(), params: params()) do
-      {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
-        IO.puts("Response Body: #{inspect body}")
+    HTTPoison.post(@url, body(country, vat), headers(), params: params())
+    |> handle_soap_response
+  end
 
-      {:error, error = %HTTPoison.Error{reason: reason}} -> error
-    end
+  defp handle_soap_response({:error, %HTTPoison.Error{reason: reason}}), do: {:error, reason}
+  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 404}}), do: {:error, :not_found}
+  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 500}}), do: {:error, :internal_server_error}
+  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}) do
+    body
   end
 
   defp headers do
     [
       {"SOAPAction", ""},
       {"Content-Type", "text/xml;charset=UTF-8"},
-      {"Accept-Encoding", "gzip"},
     ]
   end
 

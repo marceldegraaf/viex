@@ -21,7 +21,8 @@ defmodule Viex.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.11"}
+      {:httpoison, "~> 0.11"},
+      {:floki, "~> 0.13"},
     ]
   end
 end
