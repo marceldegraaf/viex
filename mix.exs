@@ -12,7 +12,7 @@ defmodule Viex.Mixfile do
       deps: deps(),
       package: package(),
       test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.html": :test],
+      preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.html": :test, "coveralls.semaphore": :test],
 
       # Documentation
       name: "Viex",
