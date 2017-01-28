@@ -5,9 +5,26 @@ defmodule Viex do
 
   @url "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
 
-  def verify(country, vat) do
-    HTTPoison.post(@url, body(country, vat), headers(), params: params())
+  def verify(vat_number) when is_atom(vat_number) do
+    vat_number
+    |> Atom.to_string
+    |> verify
+  end
+
+  def verify(vat_number) do
+    vat_number
+    |> String.split_at(2)
+    |> request
     |> handle_soap_response
+  end
+
+  def verify(country, vat) do
+    request({country, vat})
+    |> handle_soap_response
+  end
+
+  defp request({country, vat}) do
+    HTTPoison.post(@url, body(country, vat), headers(), params: params())
   end
 
   defp handle_soap_response({:error, %HTTPoison.Error{reason: reason}}), do: {:error, reason}
