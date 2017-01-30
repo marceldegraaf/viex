@@ -25,7 +25,6 @@ defmodule Viex.Mixfile do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Viex.Application, []}
     ]
   end
 
@@ -37,6 +36,7 @@ defmodule Viex.Mixfile do
       {:excoveralls, "~> 0.5", only: :test},
       {:ex_doc, "~> 0.14", only: :dev},
       {:earmark, "~> 1.1", only: :dev},
+      {:credo, "~> 0.5", only: [:dev, :test]}
     ]
   end
 

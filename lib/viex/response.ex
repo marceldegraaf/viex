@@ -1,4 +1,8 @@
 defmodule Viex.Response do
+  @moduledoc """
+  Parses and represents a VIES SOAP response.
+  """
+
   defstruct valid: false, company: nil, address: nil
 
   @doc """
@@ -8,13 +12,13 @@ defmodule Viex.Response do
   def parse({:error, reason}), do: {:error, reason}
   def parse({:ok, body}) do
     %Viex.Response{
-      valid: valid(body),
-      company: company(body),
-      address: address(body)
+      valid: parse_validity(body),
+      company: parse_company(body),
+      address: parse_address(body)
     }
   end
 
-  defp valid(body) do
+  defp parse_validity(body) do
     valid =
       body
       |> Floki.find("valid")
@@ -28,7 +32,7 @@ defmodule Viex.Response do
     end
   end
 
-  defp company(body) do
+  defp parse_company(body) do
     company =
       body
       |> Floki.find("name")
@@ -41,7 +45,7 @@ defmodule Viex.Response do
     end
   end
 
-  defp address(body) do
+  defp parse_address(body) do
     address =
       body
       |> Floki.find("address")
