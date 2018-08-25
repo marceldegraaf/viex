@@ -23,7 +23,7 @@ defmodule Viex.Response do
       body
       |> Floki.find("valid")
       |> Floki.text
-      |> String.strip
+      |> String.trim
 
     case valid do
       "true" -> true
@@ -37,7 +37,7 @@ defmodule Viex.Response do
       body
       |> Floki.find("name")
       |> Floki.text
-      |> String.strip
+      |> String.trim
 
     case company do
       ""      -> nil
@@ -50,7 +50,7 @@ defmodule Viex.Response do
       body
       |> Floki.find("address")
       |> Floki.text
-      |> String.strip
+      |> String.trim
 
     case address do
       ""      -> nil
