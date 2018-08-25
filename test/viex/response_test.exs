@@ -24,10 +24,10 @@ defmodule Viex.ResponseTest do
     response = Viex.Response.parse({:ok, body})
 
     assert response == %Viex.Response{
-      address: "KERKSTRAAT 23\n1234AB FLEVOLAND",
-      company: "Acme B.V.",
-      valid: true
-    }
+             address: "KERKSTRAAT 23\n1234AB FLEVOLAND",
+             company: "Acme B.V.",
+             valid: true
+           }
   end
 
   test "returns the error" do

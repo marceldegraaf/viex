@@ -7,10 +7,10 @@ defmodule ViexTest do
       response = Viex.lookup("NL854265259B01")
 
       assert response == %Viex.Response{
-        address: "PRINS BERNHARDPLEIN 00200\n1097JB AMSTERDAM",
-        company: "GITHUB B.V.",
-        valid: true
-      }
+               address: "PRINS BERNHARDPLEIN 00200\n1097JB AMSTERDAM",
+               company: "GITHUB B.V.",
+               valid: true
+             }
     end
   end
 
@@ -19,10 +19,10 @@ defmodule ViexTest do
       response = Viex.lookup("NL9999999")
 
       assert response == %Viex.Response{
-        address: "---",
-        company: "---",
-        valid: false
-      }
+               address: "---",
+               company: "---",
+               valid: false
+             }
     end
   end
 
