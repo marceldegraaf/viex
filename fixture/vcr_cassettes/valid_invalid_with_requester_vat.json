@@ -1,0 +1,28 @@
+[
+  {
+    "request": {
+      "body": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:urn=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\">\n        <soapenv:Header/>\n        <soapenv:Body>\n          <urn:checkVatApprox>\n            <urn:countryCode>NL</urn:countryCode>\n            <urn:vatNumber>9999999</urn:vatNumber>\n            <urn:requesterCountryCode>IE</urn:requesterCountryCode>\n            <urn:requesterVatNumber>6388047V</urn:requesterVatNumber>\n          </urn:checkVatApprox>\n        </soapenv:Body>\n      </soapenv:Envelope>",
+      "headers": {
+        "SOAPAction": "",
+        "Content-Type": "text/xml;charset=UTF-8"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService?"
+    },
+    "response": {
+      "body": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><checkVatApproxResponse xmlns=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><countryCode>NL</countryCode><vatNumber>9999999</vatNumber><requestDate>2018-08-25+02:00</requestDate><valid>false</valid><traderName>---</traderName><traderCompanyType>---</traderCompanyType><traderAddress>---</traderAddress><requestIdentifier></requestIdentifier></checkVatApproxResponse></soap:Body></soap:Envelope>",
+      "headers": {
+        "Date": "Sat, 25 Aug 2018 20:24:36 GMT",
+        "Transfer-Encoding": "chunked",
+        "Content-Type": "text/xml; charset=UTF-8",
+        "Server": "Europa",
+        "Proxy-Connection": "Keep-Alive",
+        "Connection": "Keep-Alive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
