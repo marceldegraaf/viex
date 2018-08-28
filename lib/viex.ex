@@ -29,7 +29,7 @@ defmodule Viex do
   @doc """
   Check the validity of a European VAT number. Accepts a binary, returns a boolean.
   """
-  @spec valid?(String.t()) :: boolean
+  @spec valid?(String.t(), [requester_vat: String.t | nil]) :: boolean
   def valid?(vat_number, opts \\ []) do
     vat_number
     |> lookup(opts)
