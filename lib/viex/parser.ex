@@ -25,4 +25,15 @@ defmodule Viex.Parser do
       field -> field
     end
   end
+
+  def handle_debug(body) do
+    case debug_enabled?() do
+      false ->
+        nil
+      true ->
+        body
+    end
+  end
+
+  defp debug_enabled?, do:  Application.get_env(:viex, :debug_enabled, false)
 end

@@ -12,7 +12,8 @@ defmodule Viex.ApproxResponse do
             trader_street: nil,
             trader_postcode: nil,
             trader_city: nil,
-            request_identifier: nil
+            request_identifier: nil,
+            response_body: nil
 
   @doc """
   Parses a raw VIES SOAP response into a `Viex.ApproxResponse` struct.
@@ -29,8 +30,8 @@ defmodule Viex.ApproxResponse do
       trader_street: Parser.parse_field(body, "traderstreet"),
       trader_postcode: Parser.parse_field(body, "traderpostcode"),
       trader_city: Parser.parse_field(body, "tradercity"),
-      request_identifier: Parser.parse_field(body, "requestidentifier")
+      request_identifier: Parser.parse_field(body, "requestidentifier"),
+      response_body: Parser.handle_debug(body)
     }
   end
-
 end
