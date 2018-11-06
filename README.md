@@ -18,6 +18,19 @@ def deps do
 end
 ```
 
+## Error scenarios described by the WSDL
+
+From the service WSDL we know these possible error reasons
+
+
+| Fault String | Meaning | Suggested recovery |
+| -------------| --------| ------------------ |
+| GLOBAL_MAX_CONCURRENT_REQ |  Your Request for VAT validation has not been processed; the maximum number of concurrent requests has been reached. Please re-submit your request later or contact TAXUD-VIESWEB@ec.europa.eu for further information": Your request cannot be processed due to high traffic on the web application. | Try again later |
+| MS_MAX_CONCURRENT_REQ |  Your Request for VAT validation has not been processed; the maximum number of concurrent requests for this Member State has been reached. Please re-submit your request later or contact TAXUD-VIESWEB@ec.europa.eu for further information": Your request cannot be processed due to high traffic towards the Member State you are trying to reach. | Try again later |
+| SERVICE_UNAVAILABLE |  An error was encountered either at the network level or the Web application level | Try again later
+| MS_UNAVAILABLE |  The application at the Member State is not replying or not available. Please refer to the Technical Information page to check the status of the requested Member State. | Try again later |
+| TIMEOUT | The application did not receive a reply within the allocated time period | Try again later |
+
 ## Usage
 
 Use `Viex.lookup/1` to look up a European VAT number. Returns a `Viex.Response`

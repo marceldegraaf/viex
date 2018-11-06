@@ -37,11 +37,13 @@ defmodule Viex.Mixfile do
     [
       {:httpoison, "~> 0.11"},
       {:floki, "~> 0.13"},
+      {:sweet_xml, "~> 0.6.5"},
       {:exvcr, "~> 0.8", only: :test},
       {:excoveralls, "~> 0.5", only: :test},
       {:ex_doc, "~> 0.14", only: :dev},
       {:earmark, "~> 1.1", only: :dev},
-      {:credo, "~> 0.5", only: [:dev, :test]}
+      {:credo, "~> 0.5", only: [:dev, :test]},
+      {:mox, "~> 0.4", only: [:test]}
     ]
   end
 
