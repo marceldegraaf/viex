@@ -1,4 +1,9 @@
 defmodule Viex do
+
+  import SweetXml
+
+  alias Viex.Http
+
   @moduledoc """
   Look up and validate European VAT numbers.
   """
@@ -41,13 +46,13 @@ defmodule Viex do
   defp is_valid?({:error, _reason}), do: false
 
   defp request({country, vat}, nil) do
-    HTTPoison.post(@url, body(country, vat), headers(), params: params())
+    Http.post(@url, body(country, vat), headers(), params: params())
   end
 
   defp request({country, vat}, requester_vat) do
     {requester_country, requester_vat} = String.split_at(requester_vat, 2)
 
-    HTTPoison.post(@url, body(country, vat, requester_country, requester_vat), headers(),
+    Http.post(@url, body(country, vat, requester_country, requester_vat), headers(),
       params: params()
     )
   end
@@ -60,13 +65,35 @@ defmodule Viex do
   defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 500}}),
     do: {:error, :internal_server_error}
 
-  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}),
-    do: {:ok, body}
+  defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}) do
+    check_for_soap_errors(body)
+  end
+
+  defp check_for_soap_errors(body) do
+    case get_fault_string(body) do
+      nil ->
+        {:ok, body}
+      fault_string ->
+        {:error, {:internal_server_error, fault_string}}
+    end
+  end
+
+  defp get_fault_string(body) do
+    fault_string = body
+    |> xpath(~x"//soap:Fault/faultstring/text()")
+
+    case fault_string do
+      nil ->
+        nil
+      charlist ->
+        to_string(charlist)
+    end
+  end
 
   defp headers do
     [
       {"SOAPAction", ""},
-      {"Content-Type", "text/xml;charset=UTF-8"}
+      {"ContentType", "text/xml;charset=UTF8"}
     ]
   end
 
