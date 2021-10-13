@@ -4,6 +4,7 @@ defmodule Viex.Parser do
   def parse_validity(body) do
     valid =
       body
+      |> Floki.parse_document!()
       |> Floki.find("valid")
       |> Floki.text()
       |> String.trim()
@@ -17,6 +18,7 @@ defmodule Viex.Parser do
 
   def parse_field(body, field) do
     body
+    |> Floki.parse_document!()
     |> Floki.find(field)
     |> Floki.text()
     |> String.trim()
