@@ -9,12 +9,13 @@
       "method": "post",
       "options": [],
       "request_body": "",
-      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService?"
+      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
     },
     "response": {
-      "body": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><checkVatApproxResponse xmlns=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><countryCode>NL</countryCode><vatNumber>854265259B01</vatNumber><requestDate>2018-08-25+02:00</requestDate><valid>true</valid><traderName>GITHUB B.V.</traderName><traderCompanyType>---</traderCompanyType><traderAddress>\nVIJZELSTRAAT 00068\n1017HL AMSTERDAM\n</traderAddress><requestIdentifier>WAPIAAAAWVyvkfTw</requestIdentifier></checkVatApproxResponse></soap:Body></soap:Envelope>",
+      "binary": false,
+      "body": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><checkVatApproxResponse xmlns=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><countryCode>NL</countryCode><vatNumber>854265259B01</vatNumber><requestDate>2021-10-13+02:00</requestDate><valid>true</valid><traderName>GITHUB B.V.</traderName><traderCompanyType>---</traderCompanyType><traderAddress>\nVIJZELSTRAAT 00068\n1017HL AMSTERDAM\n</traderAddress><requestIdentifier>WAPIAAAAXx5FSE-t</requestIdentifier></checkVatApproxResponse></soap:Body></soap:Envelope>",
       "headers": {
-        "Date": "Sat, 25 Aug 2018 20:19:57 GMT",
+        "Date": "Wed, 13 Oct 2021 09:56:40 GMT",
         "Transfer-Encoding": "chunked",
         "Content-Type": "text/xml; charset=UTF-8",
         "Server": "Europa",

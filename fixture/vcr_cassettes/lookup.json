@@ -9,12 +9,13 @@
       "method": "post",
       "options": [],
       "request_body": "",
-      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService?"
+      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
     },
     "response": {
-      "body": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><checkVatResponse xmlns=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><countryCode>NL</countryCode><vatNumber>854265259B01</vatNumber><requestDate>2017-01-28+01:00</requestDate><valid>true</valid><name>GITHUB B.V.</name><address>\nPRINS BERNHARDPLEIN 00200\n1097JB AMSTERDAM\n</address></checkVatResponse></soap:Body></soap:Envelope>",
+      "binary": false,
+      "body": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><checkVatResponse xmlns=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><countryCode>NL</countryCode><vatNumber>854265259B01</vatNumber><requestDate>2021-10-13+02:00</requestDate><valid>true</valid><name>GITHUB B.V.</name><address>\nVIJZELSTRAAT 00068\n1017HL AMSTERDAM\n</address></checkVatResponse></soap:Body></soap:Envelope>",
       "headers": {
-        "Date": "Sat, 28 Jan 2017 21:38:49 GMT",
+        "Date": "Wed, 13 Oct 2021 09:55:42 GMT",
         "Transfer-Encoding": "chunked",
         "Content-Type": "text/xml; charset=UTF-8",
         "Server": "Europa",
