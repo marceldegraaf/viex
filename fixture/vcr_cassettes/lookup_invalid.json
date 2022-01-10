@@ -9,12 +9,13 @@
       "method": "post",
       "options": [],
       "request_body": "",
-      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService?"
+      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
     },
     "response": {
-      "body": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><checkVatResponse xmlns=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><countryCode>NL</countryCode><vatNumber>9999999</vatNumber><requestDate>2017-01-28+01:00</requestDate><valid>false</valid><name>---</name><address>---</address></checkVatResponse></soap:Body></soap:Envelope>",
+      "binary": false,
+      "body": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><checkVatResponse xmlns=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><countryCode>NL</countryCode><vatNumber>9999999</vatNumber><requestDate>2022-01-10+01:00</requestDate><valid>false</valid><name>---</name><address>---</address></checkVatResponse></soap:Body></soap:Envelope>",
       "headers": {
-        "Date": "Sat, 28 Jan 2017 21:39:58 GMT",
+        "Date": "Mon, 10 Jan 2022 14:10:37 GMT",
         "Transfer-Encoding": "chunked",
         "Content-Type": "text/xml; charset=UTF-8",
         "Server": "Europa",
