@@ -7,7 +7,7 @@ defmodule ViexTest do
       response = Viex.lookup("NL854265259B01")
 
       assert response == %Viex.Response{
-               address: "PRINS BERNHARDPLEIN 00200\n1097JB AMSTERDAM",
+               address: "VIJZELSTRAAT 00068\n1017HL AMSTERDAM",
                company: "GITHUB B.V.",
                valid: true
              }
@@ -17,7 +17,7 @@ defmodule ViexTest do
       response = Viex.lookup("NL854265259B01", requester_vat: "IE6388047V")
 
       assert response == %Viex.ApproxResponse{
-        request_identifier: "WAPIAAAAWVyvkfTw",
+        request_identifier: "WAPIAAAAX5EVdeMq",
         trader_address: "VIJZELSTRAAT 00068\n1017HL AMSTERDAM",
         trader_city: nil,
         trader_company_type: "---",

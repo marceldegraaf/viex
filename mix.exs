@@ -35,13 +35,14 @@ defmodule Viex.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.11"},
-      {:floki, "~> 0.13"},
-      {:exvcr, "~> 0.8", only: :test},
-      {:excoveralls, "~> 0.5", only: :test},
-      {:ex_doc, "~> 0.14", only: :dev},
-      {:earmark, "~> 1.1", only: :dev},
-      {:credo, "~> 0.5", only: [:dev, :test]}
+      {:httpoison, "~> 1.8.0"},
+      {:floki, "~> 0.32"},
+      {:hackney, "~> 1.18.0"},
+      {:exvcr, "~> 0.13", only: :test},
+      {:excoveralls, "~> 0.14", only: :test},
+      {:ex_doc, "~> 0.26", only: :dev},
+      {:earmark, "~> 1.4", only: :dev},
+      {:credo, "~> 0.6", only: [:dev, :test]}
     ]
   end
 
