@@ -10,7 +10,7 @@ defmodule Viex do
   Optionally accepts a `requester_vat` options that needs the VAT number of the entity
   the request is made on behalf of. It returns a `Viex.ApproxResponse` in that case
   """
-  @spec lookup(String.t(), [requester_vat: String.t | nil]) :: map | {:error, String.t()}
+  @spec lookup(String.t(), requester_vat: String.t() | nil) :: map | {:error, String.t()}
   def lookup(vat_number, opts \\ []) do
     requester_vat = Keyword.get(opts, :requester_vat)
 
@@ -29,7 +29,7 @@ defmodule Viex do
   @doc """
   Check the validity of a European VAT number. Accepts a binary, returns a boolean.
   """
-  @spec valid?(String.t(), [requester_vat: String.t | nil]) :: boolean
+  @spec valid?(String.t(), requester_vat: String.t() | nil) :: boolean
   def valid?(vat_number, opts \\ []) do
     vat_number
     |> lookup(opts)

@@ -7,7 +7,7 @@ defmodule ViexTest do
       response = Viex.lookup("NL854265259B01")
 
       assert response == %Viex.Response{
-               address: "PRINS BERNHARDPLEIN 00200\n1097JB AMSTERDAM",
+               address: "VIJZELSTRAAT 00068\n1017HL AMSTERDAM",
                company: "GITHUB B.V.",
                valid: true
              }
@@ -17,15 +17,15 @@ defmodule ViexTest do
       response = Viex.lookup("NL854265259B01", requester_vat: "IE6388047V")
 
       assert response == %Viex.ApproxResponse{
-        request_identifier: "WAPIAAAAWVyvkfTw",
-        trader_address: "VIJZELSTRAAT 00068\n1017HL AMSTERDAM",
-        trader_city: nil,
-        trader_company_type: "---",
-        trader_name: "GITHUB B.V.",
-        trader_postcode: nil,
-        trader_street: nil,
-        valid: true
-      }
+               request_identifier: "WAPIAAAAYnkVx97D",
+               trader_address: "VIJZELSTRAAT 00068\n1017HL AMSTERDAM",
+               trader_city: nil,
+               trader_company_type: "---",
+               trader_name: "GITHUB B.V.",
+               trader_postcode: nil,
+               trader_street: nil,
+               valid: true
+             }
     end
   end
 
@@ -43,7 +43,16 @@ defmodule ViexTest do
     use_cassette "lookup_invalid with requester vat" do
       response = Viex.lookup("NL9999999", requester_vat: "IE6388047V")
 
-      assert response == %Viex.ApproxResponse{trader_city: nil, trader_company_type: "---", trader_postcode: nil, trader_street: nil, request_identifier: nil, trader_address: "---", trader_name: "---", valid: false}
+      assert response == %Viex.ApproxResponse{
+               trader_city: nil,
+               trader_company_type: "---",
+               trader_postcode: nil,
+               trader_street: nil,
+               request_identifier: nil,
+               trader_address: "---",
+               trader_name: "---",
+               valid: false
+             }
     end
   end
 

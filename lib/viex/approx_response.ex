@@ -32,5 +32,4 @@ defmodule Viex.ApproxResponse do
       request_identifier: Parser.parse_field(body, "requestidentifier")
     }
   end
-
 end

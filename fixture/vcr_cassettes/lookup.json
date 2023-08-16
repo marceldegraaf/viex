@@ -9,17 +9,20 @@
       "method": "post",
       "options": [],
       "request_body": "",
-      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService?"
+      "url": "http://ec.europa.eu/taxation_customs/vies/services/checkVatService"
     },
     "response": {
-      "body": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><checkVatResponse xmlns=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><countryCode>NL</countryCode><vatNumber>854265259B01</vatNumber><requestDate>2017-01-28+01:00</requestDate><valid>true</valid><name>GITHUB B.V.</name><address>\nPRINS BERNHARDPLEIN 00200\n1097JB AMSTERDAM\n</address></checkVatResponse></soap:Body></soap:Envelope>",
+      "binary": false,
+      "body": "<env:Envelope xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\"><env:Header/><env:Body><ns2:checkVatResponse xmlns:ns2=\"urn:ec.europa.eu:taxud:vies:services:checkVat:types\"><ns2:countryCode>NL</ns2:countryCode><ns2:vatNumber>854265259B01</ns2:vatNumber><ns2:requestDate>2023-08-11+02:00</ns2:requestDate><ns2:valid>true</ns2:valid><ns2:name>GITHUB B.V.</ns2:name><ns2:address>\nVIJZELSTRAAT 00068\n1017HL AMSTERDAM\n</ns2:address></ns2:checkVatResponse></env:Body></env:Envelope>",
       "headers": {
-        "Date": "Sat, 28 Jan 2017 21:38:49 GMT",
-        "Transfer-Encoding": "chunked",
+        "Date": "Fri, 11 Aug 2023 11:23:10 GMT",
+        "Content-Length": "480",
         "Content-Type": "text/xml; charset=UTF-8",
+        "SOAPAction": "\"\"",
+        "Accept": "text/xml",
         "Server": "Europa",
         "Proxy-Connection": "Keep-Alive",
-        "Connection": "Keep-Alive"
+        "Connection": "keep-alive"
       },
       "status_code": 200,
       "type": "ok"

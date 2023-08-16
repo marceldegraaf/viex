@@ -14,7 +14,7 @@ Add `viex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:viex, "~> 0.1.0"}]
+  [{:viex, "~> 0.3.0"}]
 end
 ```
 

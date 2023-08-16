@@ -4,7 +4,7 @@ defmodule Viex.Mixfile do
   def project do
     [
       app: :viex,
-      version: "0.2.0",
+      version: "0.3.0",
       elixir: "~> 1.4",
       description: "Elixir package to validate European VAT numbers with the VIES service.",
       build_embedded: Mix.env() == :prod,
@@ -35,7 +35,7 @@ defmodule Viex.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.11"},
+      {:httpoison, "~> 1.0"},
       {:floki, "~> 0.13"},
       {:exvcr, "~> 0.8", only: :test},
       {:excoveralls, "~> 0.5", only: :test},
