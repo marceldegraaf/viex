@@ -21,3 +21,5 @@ erl_crash.dump
 
 # Elixir code analyzer results
 .elixir_ls
+
+.tool-versions
