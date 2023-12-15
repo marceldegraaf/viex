@@ -41,14 +41,17 @@ defmodule Viex do
   defp is_valid?({:error, _reason}), do: false
 
   defp request({country, vat}, nil) do
-    HTTPoison.post(@url, body(country, vat), headers(), params: params())
+    HTTPoison.post(@url, body(country, vat), headers(), options())
   end
 
   defp request({country, vat}, requester_vat) do
     {requester_country, requester_vat} = String.split_at(requester_vat, 2)
 
-    HTTPoison.post(@url, body(country, vat, requester_country, requester_vat), headers(),
-      params: params()
+    HTTPoison.post(
+      @url,
+      body(country, vat, requester_country, requester_vat),
+      headers(),
+      options()
     )
   end
 
@@ -63,7 +66,7 @@ defmodule Viex do
   defp handle_soap_response({:ok, %HTTPoison.Response{status_code: 200, body: body}}),
     do: {:ok, body}
 
-  defp headers do
+  defp headers() do
     [
       {"SOAPAction", ""},
       {"Content-Type", "text/xml;charset=UTF-8"}
@@ -96,5 +99,13 @@ defmodule Viex do
       </soapenv:Envelope>)
   end
 
-  defp params, do: []
+  defp options() do
+    [
+      {:timeout, Application.get_env(:viex, :timeout, 10_000)},
+      {:recv_timeout, Application.get_env(:viex, :recv_timeout, 10_000)},
+      {:params, params()}
+    ]
+  end
+
+  defp params(), do: []
 end
