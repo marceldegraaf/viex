@@ -4,7 +4,7 @@ defmodule Viex.Mixfile do
   def project do
     [
       app: :viex,
-      version: "0.3.0",
+      version: "0.3.1",
       elixir: "~> 1.4",
       description: "Elixir package to validate European VAT numbers with the VIES service.",
       build_embedded: Mix.env() == :prod,
